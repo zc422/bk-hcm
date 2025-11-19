@@ -35,6 +35,7 @@ import useFilterResource from './useFilterResource';
 import { CLB_QUOTA_NAME } from '@/typings';
 import { useBusinessStore, useResourceStore } from '@/store';
 import { useWhereAmI } from '@/hooks/useWhereAmI';
+import RegionSelector from '../../components/common/region-selector.vue';
 
 const { Option } = Select;
 const { FormItem } = Form;
@@ -146,6 +147,28 @@ export default (formModel: Reactive<ApplyClbModel>) => {
       id: 'config',
       title: '配置信息',
       children: [
+        [
+          {
+            label: '云地域',
+            required: true,
+            property: 'region',
+            content: () => (
+              // <BkRadioGroup v-model={formModel.load_balancer_type} onChange={handleLoadBalancerTypeChange}>
+              //   {LOAD_BALANCER_TYPE.map(({ label, value }) => (
+              //     <BkRadioButton label={value} class='w110'>
+              //       {t(label)}
+              //     </BkRadioButton>
+              //   ))}
+              // </BkRadioGroup>
+              <RegionSelector
+                v-model={formModel.region}
+                type={ResourceTypeEnum.CLB}
+                vendor={formModel.vendor}
+                account-id={formModel.account_id}
+              />
+            ),
+          },
+        ],
         [
           {
             label: '网络类型',

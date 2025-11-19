@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AccountSelector, { IAccountOption } from '@/components/account-selector/index-new.vue';
-import RegionSelector from '../region-selector.vue';
+// import RegionSelector from '../region-selector.vue';
 import ResourceGroupSelector from '../resource-group-selector.vue';
 import { IAccountItem } from '@/typings';
 import { ResourceTypeEnum, VendorEnum } from '@/common/constant';
@@ -125,14 +125,14 @@ watch(
         :vendor="selectedVendor"
       />
     </FormItem>
-    <FormItem label="云地域" required property="region">
+    <!-- <FormItem label="云地域" required property="region">
       <region-selector
         v-model="selectedRegion"
         :type="type"
         :vendor="selectedVendor"
         :account-id="selectedCloudAccountId"
       />
-    </FormItem>
+    </FormItem> -->
     <slot />
     <slot name="appendix" />
   </CommonCard>
